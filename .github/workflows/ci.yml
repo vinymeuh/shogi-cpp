@@ -1,0 +1,24 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Build libshogi
+        run : |
+          mkdir build && cd build
+          cmake ..
+          make shogiTests
+
+      - name: Run tests
+        run : build/tests/shogiTests
