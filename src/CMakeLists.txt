@@ -16,3 +16,6 @@ set(SOURCE_FILES
 )
 
 add_library(shogi ${SOURCE_FILES} ${HEADER_FILES})
+
+target_compile_options(shogi PUBLIC -Wall -pedantic)
+target_link_libraries(shogi PUBLIC coverage_config)
