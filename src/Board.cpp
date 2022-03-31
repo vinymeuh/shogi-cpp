@@ -8,7 +8,7 @@
 
 using namespace shogi;
 
-Board::Board(unsigned int files, unsigned int ranks)
+Board::Board(int files, int ranks)
     : m_ranks{ranks}, m_files{files}, m_squares{ranks*files} {
     for (int i=0; i<m_squares; i++) {
         m_board.push_back(Square{toFile(i), toRank(i), Piece{Color::none, Type::none}});
@@ -61,13 +61,13 @@ void Board::setSFEN(const std::string sfen) {
     while (std::getline(board_state, token, '/')) {
         ranks.push_back(token);
     }
-    if (ranks.size() != m_ranks) {
+    if ((int)ranks.size() != m_ranks) {
         throw std::invalid_argument("invalid sfen: missing at least one rank in board state");
     }
 
     unsigned int file;
     bool promoted = false;
-    for (unsigned int rank=0; rank<m_ranks; ++rank) {
+    for (int rank=0; rank<m_ranks; ++rank) {
         file = 0;   // TODO: check file < m_files
         for (const char& pieceChr : ranks[rank]) {
             if (isdigit(pieceChr)) {

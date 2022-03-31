@@ -64,9 +64,9 @@ TEST_CASE("ShogiBoard: moveCanPromote & moveMustPromote") {
         };
 
         for (const auto& piece : pieces) {
-            for (unsigned int from=0; from<board.squares(); from++) {
+            for (int from=0; from<board.squares(); from++) {
                 board[from] = Square(board.toFile(from), board.toRank(from), piece);
-                for (unsigned int to=0; to<board.squares(); to++) {
+                for (int to=0; to<board.squares(); to++) {
                     REQUIRE(board.moveCanPromote(from, to) == false);
                     REQUIRE(board.moveMustPromote(from, to) == false);
                 }
@@ -85,10 +85,10 @@ TEST_CASE("ShogiBoard: moveCanPromote & moveMustPromote") {
         };
 
         for (const auto& piece : pieces) {
-            for (unsigned int from=0; from<board.squares(); from++) {
+            for (int from=0; from<board.squares(); from++) {
                 // Black Silver
                 board[from] = Square(board.toFile(from), board.toRank(from), piece);
-                for (unsigned int to=0; to<board.squares(); to++) {
+                for (int to=0; to<board.squares(); to++) {
                     if ( (piece.color == Color::black && (from <=18 || to <=18)) ||
                          (piece.color == Color::white && (from >=54 || to >=54)) ) {
                         REQUIRE(board.moveCanPromote(from, to) == true);
@@ -109,9 +109,9 @@ TEST_CASE("ShogiBoard: moveCanPromote & moveMustPromote") {
         };
 
         for (const auto& piece : pieces) {
-            for (unsigned int from=0; from<board.squares(); from++) {
+            for (int from=0; from<board.squares(); from++) {
                 board[from] = Square(board.toFile(from), board.toRank(from), piece);
-                for (unsigned int to=0; to<board.squares(); to++) {
+                for (int to=0; to<board.squares(); to++) {
                     if ( (piece.color == Color::black && (from <=18 || to <=18)) ||
                          (piece.color == Color::white && (from >=54 || to >=54)) ) {
                         REQUIRE(board.moveCanPromote(from, to) == true);
@@ -140,9 +140,9 @@ TEST_CASE("ShogiBoard: moveCanPromote & moveMustPromote") {
         };
 
         for (const auto& piece : pieces) {
-            for (unsigned int from=0; from<board.squares(); from++) {
+            for (int from=0; from<board.squares(); from++) {
                 board[from] = Square(board.toFile(from), board.toRank(from), piece);
-                for (unsigned int to=0; to<board.squares(); to++) {
+                for (int to=0; to<board.squares(); to++) {
                     if ( (piece.color == Color::black && (from <=18 || to <=18)) ||
                          (piece.color == Color::white && (from >=54 || to >=54)) ) {
                         REQUIRE(board.moveCanPromote(from, to) == true);

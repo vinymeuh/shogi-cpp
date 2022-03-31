@@ -18,11 +18,11 @@ namespace shogi {
 
 class Board {
 public:
-    Board(unsigned int files, unsigned int ranks);
+    Board(int files, int ranks);
 
     void reset();
 
-    unsigned int squares() const { return m_squares; }
+    int squares() const { return m_squares; }
 
     // Index <-> (File, Rank) conversion functions
     // Notes:
@@ -65,9 +65,9 @@ public:
 
 protected:
     // board characteriscs
-    unsigned int m_files;   // columns
-    unsigned int m_ranks;   // lines
-    unsigned int m_squares; // lines x columns
+    int m_ranks;   // lines
+    int m_files;   // columns
+    int m_squares; // lines x columns
 
     // board representation as an array of m_squares elements (square centric)
     std::vector<Square> m_board;
